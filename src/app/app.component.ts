@@ -6,7 +6,7 @@ import { CountryComponent } from "./country/country.component";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [HeaderComponent, NavigationComponent,CountryComponent],
+  imports: [HeaderComponent, NavigationComponent, CountryComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

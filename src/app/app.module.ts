@@ -10,9 +10,5 @@ import { CountryComponent } from './country/country.component';
     AppComponent
   ],
   providers: [],
-  declarations: [
-    NavigationComponent,
-    CountryComponent
-  ],
 })
 export class AppModule { }
