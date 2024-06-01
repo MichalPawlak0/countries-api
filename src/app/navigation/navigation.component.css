@@ -24,10 +24,12 @@
   border: none;
   box-shadow: 0 0 10px #cacaca;
   color: #858585;
+  border-radius: 5px;
 }
 .navigation__selection {
   flex: 0 1 18%;
   padding: 1.6rem;
   border: none;
   box-shadow: 0 0 10px #cacaca;
+  border-radius: 5px;
 }
