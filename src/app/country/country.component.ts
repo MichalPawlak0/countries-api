@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+
+import COUNTRIES from "../../../data.json";
+
+const randomIndex = Math.floor(Math.random() * COUNTRIES.length);
 
 @Component({
   selector: 'app-country',
@@ -7,5 +11,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./country.component.css']
 })
 export class CountryComponent {
-
+  selectedCountry = COUNTRIES[randomIndex];
+  backgroundImage = `url("${this.selectedCountry.flag}")`;
 }

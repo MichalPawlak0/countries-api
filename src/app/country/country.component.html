@@ -1,19 +1,19 @@
 <div class="country">
-  <div class="flag-box"></div>
+  <div class="flag-box" [style.background-image]="backgroundImage"></div>
   <div class="info-box">
-    <h2 class="country__name">USA</h2>
+    <h2 class="country__name">{{ selectedCountry.name }}</h2>
     <div class="additional-info-box">
       <div class="additional-info">
         <span class="info-title">Population:</span
-        ><span class="info">100000</span>
+        ><span class="info">{{ selectedCountry.population }}</span>
       </div>
       <div class="additional-info">
         <span class="info-title">Region:</span
-        ><span class="info">North America</span>
+        ><span class="info">{{ selectedCountry.region }}</span>
       </div>
       <div class="additional-info">
         <span class="info-title">Capital:</span
-        ><span class="info">Washington DC</span>
+        ><span class="info">{{ selectedCountry.capital }}</span>
       </div>
     </div>
   </div>
