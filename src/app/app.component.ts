@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { HeaderComponent } from "./header/header.component";
 import { NavigationComponent } from "./navigation/navigation.component";
 import { CountryComponent } from "./country/country.component";
+
+import COUNTRIES from "../../data.json";
 
 @Component({
   selector: 'app-root',
@@ -12,4 +14,6 @@ import { CountryComponent } from "./country/country.component";
 })
 export class AppComponent {
   title = 'countries-api';
+  selectedRegion = input.required<string>();
+  countries = COUNTRIES.filter(country => {return country.region === this.selectedRegion()});
 }

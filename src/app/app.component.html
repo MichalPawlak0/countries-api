@@ -3,7 +3,15 @@
   <div class="container">
     <app-navigation></app-navigation>
     <div class="section__flags">
-      <app-country></app-country>
+      @for (country of countries; track $index) {
+      <app-country
+        [selectedCountryName]="country.name"
+        [backgroundImageUrl]="country.flag"
+        [selectedCountryPopulation]="country.population"
+        [selectedCountryRegion]="country.region"
+        [selectedCountryCapital]="country.capital"
+      ></app-country>
+      }
     </div>
   </div>
 </main>

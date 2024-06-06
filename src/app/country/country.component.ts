@@ -1,8 +1,4 @@
-import { Component } from '@angular/core';
-
-import COUNTRIES from "../../../data.json";
-
-const randomIndex = Math.floor(Math.random() * COUNTRIES.length);
+import { Component, computed, input } from '@angular/core';
 
 @Component({
   selector: 'app-country',
@@ -11,6 +7,10 @@ const randomIndex = Math.floor(Math.random() * COUNTRIES.length);
   styleUrls: ['./country.component.css']
 })
 export class CountryComponent {
-  selectedCountry = COUNTRIES[randomIndex];
-  backgroundImage = `url("${this.selectedCountry.flag}")`;
+selectedCountryName = input.required<string>();
+backgroundImageUrl = input.required<string>();
+selectedCountryPopulation = input.required<number|string>();
+selectedCountryRegion = input.required<string>();
+selectedCountryCapital = input.required<any>();
+backgroundImage = computed(()=>`url("${this.backgroundImageUrl()}")`);
 }

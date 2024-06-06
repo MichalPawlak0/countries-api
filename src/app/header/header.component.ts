@@ -1,4 +1,6 @@
-import { Component } from "@angular/core";
+import { Component, EventEmitter, Input, Output, output } from "@angular/core";
+
+const theme = "light";
 
 @Component({
   selector: 'app-header',
@@ -8,7 +10,9 @@ import { Component } from "@angular/core";
 })
 
 export class HeaderComponent {
+selectTheme = output<string>();
+
   onThemeSwitcherClick(){
-    console.log("clicked");
+    this.selectTheme.emit(theme);
   }
 }
