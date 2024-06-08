@@ -1,9 +1,9 @@
 <app-header></app-header>
 <main class="main">
   <div class="container">
-    <app-navigation></app-navigation>
+    <app-navigation [allRegions]="allRegions()"></app-navigation>
     <div class="section__flags">
-      @for (country of countries; track $index) {
+      @for (country of filteredCountries(); track $index) {
       <app-country
         [selectedCountryName]="country.name"
         [backgroundImageUrl]="country.flag"

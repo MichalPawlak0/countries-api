@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+
 
 @Component({
   selector: 'app-navigation',
@@ -7,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
+allRegions = input.required<string[]>();
+selectedRegion = output<string>();
 
 }

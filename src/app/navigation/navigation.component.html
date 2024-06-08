@@ -32,9 +32,9 @@
     />
   </div>
 
-  <select class="navigation__selection">
-    <option class="selection__option">Europe</option>
-    <option class="selection__option">North America</option>
-    <option class="selection__option">South America</option>
+  <select id="regionSelection" class="navigation__selection">
+    @for (region of allRegions(); track $index) {
+    <option [value]="region" class="selection__option">{{ region }}</option>
+    }
   </select>
 </nav>
