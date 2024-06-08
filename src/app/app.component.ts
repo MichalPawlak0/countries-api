@@ -5,6 +5,8 @@ import { CountryComponent } from "./country/country.component";
 
 import COUNTRIES from "../../data.json";
 
+//let selectedRegionElVal = (<HTMLSelectElement>document.getElementById("regionSelection"))?.value
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -15,8 +17,7 @@ import COUNTRIES from "../../data.json";
 
 export class AppComponent {
   title = 'countries-api';
-  // selectedRegion = 
-  selectedRegion = input("Europe");
+  selectedRegion = "Asia";
 
   allRegions = computed(()=>{return COUNTRIES.
     map((country)=>{return country.region})
@@ -27,8 +28,18 @@ export class AppComponent {
 
 filteredCountries = computed(()=>{
   return COUNTRIES.filter((country)=>{
-    return country.region === this.selectedRegion();
+    return country.region === this.selectedRegion;
   })
 })
+
+onCountryChange(selRegion:string){
+  let selectedRegionElVal = (<HTMLSelectElement>document.getElementById("regionSelection")).value
+  this.selectedRegion = selectedRegionElVal;
+  this.filteredCountries = computed(()=>{
+  return COUNTRIES.filter((country)=>{
+    return country.region === this.selectedRegion;
+  })
+})
+}
 
 }

@@ -8,7 +8,7 @@ import { Component, input, output } from '@angular/core';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent {
-allRegions = input.required<string[]>();
-selectedRegion = output<string>();
+// allRegions = input.required<string[]>();
+// selectedRegion = output<string>();
 
 }
