@@ -1,0 +1,12 @@
+<main class="main">
+  <div class="container">
+    <app-navigation
+      (selectedRegionEvent)="onRegionChange($event)"
+      (searchQueryEvent)="onSearchInput($event)"
+    ></app-navigation>
+    <app-countries-display
+      [selectedRegion]="selectedRegion"
+      [searchQuery]="searchQuery"
+    ></app-countries-display>
+  </div>
+</main>

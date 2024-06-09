@@ -1,0 +1,11 @@
+<div class="section__flags">
+  @for (country of countriesToDisplay(); track $index) {
+  <app-country
+    [selectedCountryName]="country.name"
+    [backgroundImageUrl]="country.flag"
+    [selectedCountryPopulation]="country.population"
+    [selectedCountryRegion]="country.region"
+    [selectedCountryCapital]="country.capital"
+  ></app-country>
+  }
+</div>

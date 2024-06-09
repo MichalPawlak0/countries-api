@@ -1,0 +1,35 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.searchbox {
+  flex: 0 1 40%;
+  position: relative;
+}
+.search-button {
+  position: absolute;
+  height: 100%;
+  padding: 0 0 0 2rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.search-icon {
+  height: 1.8rem;
+}
+.navigation__search {
+  width: 100%;
+  padding: 1.6rem 0 1.6rem 6rem;
+  border: none;
+  box-shadow: 0 0 10px #cacaca;
+  color: #858585;
+  border-radius: 5px;
+}
+.navigation__selection {
+  flex: 0 1 18%;
+  padding: 1.6rem;
+  border: none;
+  box-shadow: 0 0 10px #cacaca;
+  border-radius: 5px;
+}
