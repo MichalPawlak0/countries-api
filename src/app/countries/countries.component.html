@@ -1,3 +1,4 @@
+@if (theme() === 'light') {
 <main class="main">
   <div class="container">
     <app-navigation
@@ -10,3 +11,17 @@
     ></app-countries-display>
   </div>
 </main>
+} @else if (theme() === 'dark') {
+<main [class.dark]="true" class="main">
+  <div class="container">
+    <app-navigation
+      (selectedRegionEvent)="onRegionChange($event)"
+      (searchQueryEvent)="onSearchInput($event)"
+    ></app-navigation>
+    <app-countries-display
+      [selectedRegion]="selectedRegion"
+      [searchQuery]="searchQuery"
+    ></app-countries-display>
+  </div>
+</main>
+}

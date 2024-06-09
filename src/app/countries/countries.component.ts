@@ -1,7 +1,8 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 
 import { NavigationComponent } from './navigation/navigation.component';
 import { CountriesDisplayComponent } from './countries-display/countries-display.component';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-countries',
@@ -11,8 +12,10 @@ import { CountriesDisplayComponent } from './countries-display/countries-display
   styleUrl: './countries.component.css',
 })
 export class CountriesComponent {
+  private appService = inject(AppService);
   selectedRegion = 'All';
   searchQuery = '';
+  theme = computed(() => this.appService.theme);
 
   onRegionChange(reg: string) {
     this.selectedRegion = reg;

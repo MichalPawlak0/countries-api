@@ -1,18 +1,18 @@
-import { Component, EventEmitter, Input, Output, output } from "@angular/core";
-
-const theme = "light";
+import { Component, computed, inject } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
-
 export class HeaderComponent {
-selectTheme = output<string>();
+  private appService = inject(AppService);
+  theme = computed(() => this.appService.theme);
 
-  onThemeSwitcherClick(){
-    this.selectTheme.emit(theme);
+  onThemeSwitcherClick() {
+    console.log(this.theme);
+    this.appService.switchTheme();
   }
 }

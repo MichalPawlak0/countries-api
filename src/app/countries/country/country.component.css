@@ -30,3 +30,9 @@
 .info-title {
   font-weight: 600;
 }
+
+@media screen and (max-width: 50em) {
+  .flag-box {
+    max-width: unset;
+  }
+}

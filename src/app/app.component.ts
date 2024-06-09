@@ -1,9 +1,6 @@
-import { Component, computed, input } from '@angular/core';
+import { Component } from '@angular/core';
 import { HeaderComponent } from './header/header.component';
-
 import { CountriesComponent } from './countries/countries.component';
-
-//let selectedRegionElVal = (<HTMLSelectElement>document.getElementById("regionSelection"))?.value
 
 @Component({
   selector: 'app-root',
