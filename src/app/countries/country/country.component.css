@@ -1,6 +1,6 @@
 .country {
   border-radius: 5px;
-  box-shadow: 0 0 20px rgba(200, 200, 200, 0.2);
+  box-shadow: 0 0 20px rgba(200, 200, 200, 0.6);
   overflow: hidden;
 }
 .flag-box {
