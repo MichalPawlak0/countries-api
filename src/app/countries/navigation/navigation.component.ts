@@ -1,7 +1,8 @@
-import { Component, computed, output, signal } from '@angular/core';
+import { Component, computed, inject, output, signal } from '@angular/core';
 
 import COUNTRIES from '../../../../data.json';
 import { FormsModule } from '@angular/forms';
+import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-navigation',
@@ -11,8 +12,12 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './navigation.component.css',
 })
 export class NavigationComponent {
+  private appService = inject(AppService);
   selectedRegionNav = 'All';
   searchQueryNav = '';
+  isSingleCountryDisplay = computed(
+    () => this.appService.isSingleCountryDisplay
+  );
 
   get allRegions() {
     let Arr = COUNTRIES.map((country) => {

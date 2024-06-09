@@ -12,7 +12,6 @@ export class HeaderComponent {
   theme = computed(() => this.appService.theme);
 
   onThemeSwitcherClick() {
-    console.log(this.theme);
     this.appService.switchTheme();
   }
 }
