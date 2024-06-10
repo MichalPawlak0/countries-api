@@ -1,4 +1,4 @@
-@if (isSingleCountryDisplay()) {
+@if (!isSingleCountryDisplay()) {
 <nav class="navigation">
   <div class="searchbox">
     <button class="search-button">
@@ -49,5 +49,7 @@
   </select>
 </nav>
 }@else {
-<div>nothing</div>
+<nav class="navigation">
+  <button (click)="onBackClick()" class="back-button">&larr; Back</button>
+</nav>
 }

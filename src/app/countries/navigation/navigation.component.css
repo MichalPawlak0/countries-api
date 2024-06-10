@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  min-height: 49px;
 }
 .searchbox {
   flex: 0 1 40%;
@@ -32,4 +33,13 @@
   border: none;
   box-shadow: 0 0 10px #cacaca;
   border-radius: 5px;
+}
+.back-button {
+  height: 100%;
+  padding: 1rem 4rem 1rem 3rem;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(200, 200, 200, 0.8);
 }

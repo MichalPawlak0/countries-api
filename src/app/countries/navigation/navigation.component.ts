@@ -15,8 +15,8 @@ export class NavigationComponent {
   private appService = inject(AppService);
   selectedRegionNav = 'All';
   searchQueryNav = '';
-  isSingleCountryDisplay = computed(
-    () => this.appService.isSingleCountryDisplay
+  isSingleCountryDisplay = computed(() =>
+    this.appService._isSingleCountryDisplay()
   );
 
   get allRegions() {
@@ -38,5 +38,10 @@ export class NavigationComponent {
   }
   onSearchQueryInput() {
     this.searchQueryEvent.emit(this.searchQueryNav);
+  }
+  onBackClick() {
+    if (this.appService._isSingleCountryDisplay()) {
+      this.appService.switchSingleCountryDisplay();
+    }
   }
 }

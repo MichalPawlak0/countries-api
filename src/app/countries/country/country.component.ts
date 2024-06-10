@@ -17,7 +17,7 @@ export class CountryComponent {
   backgroundImage = computed(() => `url("${this.backgroundImageUrl()}")`);
 
   onCountryClick() {
-    console.log('clicked');
+    this.appService.setDisplayedSingleCountry(this.selectedCountryName());
     this.appService.switchSingleCountryDisplay();
   }
 }

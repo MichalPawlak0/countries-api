@@ -4,6 +4,7 @@ import { Injectable, signal } from '@angular/core';
 export class AppService {
   public _theme = signal<string>('dark');
   public _isSingleCountryDisplay = signal<boolean>(false);
+  public _displayedSingleCountry = signal<string>('');
 
   constructor() {
     const lsTheme = localStorage.getItem('theme');
@@ -29,6 +30,10 @@ export class AppService {
   switchSingleCountryDisplay(): void {
     const newDisplay = this._isSingleCountryDisplay() === false ? true : false;
     this._isSingleCountryDisplay.set(newDisplay);
+  }
+
+  setDisplayedSingleCountry(countryName: string) {
+    this._displayedSingleCountry.set(countryName);
   }
 
   private saveTheme(): void {

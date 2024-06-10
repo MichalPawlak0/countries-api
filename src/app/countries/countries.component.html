@@ -1,5 +1,5 @@
 @if (theme() === 'light') {
-<main class="main">
+<main [class.singlecountry]="isSingleCountry()" class="main">
   <div class="container">
     <app-navigation
       (selectedRegionEvent)="onRegionChange($event)"
@@ -12,7 +12,11 @@
   </div>
 </main>
 } @else if (theme() === 'dark') {
-<main [class.dark]="true" class="main">
+<main
+  [class.singlecountry]="isSingleCountry()"
+  [class.dark]="true"
+  class="main"
+>
   <div class="container">
     <app-navigation
       (selectedRegionEvent)="onRegionChange($event)"

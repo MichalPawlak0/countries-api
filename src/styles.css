@@ -16,6 +16,30 @@ body {
   margin: 0 auto;
   padding: 0 2rem;
 }
+.info-box {
+  padding: 1.8rem;
+  max-width: 100%;
+}
+.additional-info-box {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.additional-info {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+.info-title {
+  font-weight: 600;
+}
+
+@media screen and (max-width: 50em) {
+  .flag-box {
+    max-width: unset;
+  }
+}
 
 .header.dark {
   background-color: hsl(209, 23%, 22%) !important;
@@ -32,7 +56,8 @@ body {
 }
 .main.dark .navigation__search,
 .main.dark .navigation__selection,
-.main.dark .country {
+.main.dark .country,
+.main.dark .back-button {
   background-color: hsl(207, 26%, 22%) !important;
   box-shadow: 0 0 20px hsl(208, 23%, 15%);
   color: #fff;

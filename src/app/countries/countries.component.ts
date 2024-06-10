@@ -16,6 +16,7 @@ export class CountriesComponent {
   selectedRegion = 'All';
   searchQuery = '';
   theme = computed(() => this.appService.theme);
+  isSingleCountry = computed(() => this.appService._isSingleCountryDisplay());
 
   onRegionChange(reg: string) {
     this.selectedRegion = reg;

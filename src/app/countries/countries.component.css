@@ -3,3 +3,12 @@
   background-color: #fafafa;
   min-height: calc(100vh - 78px);
 }
+.main.singlecountry {
+  background-color: #fff;
+  border-top: #fafafa solid 1rem;
+}
+
+.main.dark.singlecountry {
+  background-color: hsl(207, 26%, 22%) !important;
+  border-top: hsl(207, 26%, 17%) solid 1rem !important;
+}
