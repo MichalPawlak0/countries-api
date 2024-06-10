@@ -7,9 +7,11 @@
 }
 html {
   font-size: 0.625em;
+  overflow-x: hidden;
 }
 body {
   font-family: "Nunito Sans";
+  overflow-x: hidden;
 }
 .container {
   max-width: 120rem;
@@ -36,6 +38,9 @@ body {
 }
 
 @media screen and (max-width: 50em) {
+  .heading-primary {
+    font-size: 5vw;
+  }
   .flag-box {
     max-width: unset;
   }
@@ -72,7 +77,7 @@ body {
 }
 
 .main.dark .info-bordercountry {
-  background-color: hsl(207, 26%, 15%) !important;
+  background-color: hsl(207, 26%, 22%) !important;
   color: #fff;
-  box-shadow: 0 0 20px hsl(208, 23%, 17%) !important;
+  box-shadow: 0 0 10px hsl(208, 23%, 10%) !important;
 }

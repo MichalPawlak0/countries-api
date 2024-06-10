@@ -43,3 +43,17 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(200, 200, 200, 0.8);
 }
+
+@media screen and (max-width: 38em) {
+  .navigation {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .searchbox {
+    width: 100%;
+  }
+  .navigation__selection {
+    width: 50%;
+  }
+}

@@ -3,11 +3,12 @@ import COUNTRIES from '../../../../data.json';
 import { CountryComponent } from '../country/country.component';
 import { FormsModule } from '@angular/forms';
 import { AppService } from 'src/app/app.service';
+import { DecimalPipe } from '@angular/common';
 
 @Component({
   selector: 'app-countries-display',
   standalone: true,
-  imports: [CountryComponent, FormsModule],
+  imports: [CountryComponent, FormsModule, DecimalPipe],
   templateUrl: './countries-display.component.html',
   styleUrl: './countries-display.component.css',
 })
@@ -84,4 +85,8 @@ export class CountriesDisplayComponent {
 
     return borCountriesArr;
   });
+
+  onBorderingCountryClick(borderingCountry: string) {
+    this.appService.setDisplayedSingleCountry(borderingCountry);
+  }
 }
