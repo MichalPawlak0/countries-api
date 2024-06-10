@@ -69,4 +69,19 @@ export class CountriesDisplayComponent {
       })
       .join(', ');
   });
+
+  singleCountryBorderingCountries = computed(() => {
+    let borCountriesArr: string[] = [];
+
+    this.singleCountryData()?.borders?.map((borderingCountry) => {
+      COUNTRIES.map((country) => {
+        if (country.alpha3Code === borderingCountry) {
+          borCountriesArr.push(country.name);
+          return;
+        }
+      });
+    });
+
+    return borCountriesArr;
+  });
 }

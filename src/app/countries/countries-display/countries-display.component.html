@@ -55,6 +55,17 @@
         ><span class="info">{{ singleCountryLanguages() }}</span>
       </div>
     </div>
+    <div class="additional-info-box">
+      <div class="additional-info">
+        <span class="info-title">Bordering countries:</span>
+        <div class="info-bordercountries">
+          @for (borderCountry of singleCountryBorderingCountries(); track
+          $index) {
+          <div class="info-bordercountry">{{ borderCountry }}</div>
+          }
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 

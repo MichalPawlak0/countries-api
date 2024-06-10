@@ -13,3 +13,9 @@
   max-width: 30rem;
   height: 15rem;
 }
+
+@media screen and (max-width: 50em) {
+  .flag-box {
+    max-width: unset;
+  }
+}

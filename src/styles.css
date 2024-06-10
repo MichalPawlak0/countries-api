@@ -65,3 +65,14 @@ body {
 .main.dark .search-icon {
   color: #fff !important;
 }
+
+.main.dark .section__singlecountry {
+  background-color: transparent;
+  color: #fff;
+}
+
+.main.dark .info-bordercountry {
+  background-color: hsl(207, 26%, 15%) !important;
+  color: #fff;
+  box-shadow: 0 0 20px hsl(208, 23%, 17%) !important;
+}
