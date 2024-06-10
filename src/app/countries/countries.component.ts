@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 
 import { NavigationComponent } from './navigation/navigation.component';
 import { CountriesDisplayComponent } from './countries-display/countries-display.component';
