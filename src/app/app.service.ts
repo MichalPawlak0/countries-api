@@ -1,18 +1,27 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class AppService {
   public _theme = signal<string>('dark');
   public _isSingleCountryDisplay = signal<boolean>(false);
   public _displayedSingleCountry = signal<string>('');
+  public DATA: any;
 
-  constructor() {
+  //http2 = inject(HttpClient);
+
+  private fetchData() {
+    this.http.get('https://restcountries.com/v3.1/all').subscribe((data) => {
+      this.DATA = data;
+    });
+  }
+
+  constructor(private http: HttpClient) {
     const lsTheme = localStorage.getItem('theme');
     if (lsTheme) {
       this._theme.set(JSON.parse(lsTheme));
     }
+    this.fetchData();
   }
 
   get theme() {

@@ -1,18 +1,19 @@
+import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 import { Component, computed, inject, output, signal } from '@angular/core';
 
-import COUNTRIES from '../../../../data.json';
 import { FormsModule } from '@angular/forms';
 import { AppService } from 'src/app/app.service';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, HttpClientModule],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.css',
 })
 export class NavigationComponent {
   private appService = inject(AppService);
+  COUNTRIES = this.appService.DATA;
   selectedRegionNav = 'All';
   searchQueryNav = '';
   isSingleCountryDisplay = computed(() =>
@@ -20,9 +21,9 @@ export class NavigationComponent {
   );
 
   get allRegions() {
-    let Arr = COUNTRIES.map((country) => {
+    let Arr = this.COUNTRIES.map((country: any) => {
       return country.region;
-    }).filter((val, ind, arr) => {
+    }).filter((val: string, ind: number, arr: string[]) => {
       return ind === arr.indexOf(val);
     });
 
