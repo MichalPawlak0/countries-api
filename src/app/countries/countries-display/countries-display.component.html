@@ -3,8 +3,8 @@
 <div class="section__flags">
   @for (country of countriesToDisplay(); track $index) {
   <app-country
-    [selectedCountryName]="country.name"
-    [backgroundImageUrl]="country.flag"
+    [selectedCountryName]="country.name.common"
+    [backgroundImageUrl]="country.flags.svg"
     [selectedCountryPopulation]="country.population"
     [selectedCountryRegion]="country.region"
     [selectedCountryCapital]="country.capital"
@@ -18,35 +18,33 @@
     [style.background-image]="singleCountryImagePath()"
   ></div>
   <div class="singlecountry-infobox">
-    <h2 class="country__name">{{ singleCountryData()?.name }}</h2>
+    <h2 class="country__name">{{ singleCountryData().name.common }}</h2>
     <div class="additional-info-box">
       <div class="additional-info">
         <span class="info-title">Native Name:</span
-        ><span class="info">{{ singleCountryData()?.nativeName }}</span>
+        ><span class="info">{{ singleCountryData().name.official }} </span>
       </div>
       <div class="additional-info">
         <span class="info-title">Population:</span
-        ><span class="info">{{
-          singleCountryData()?.population | number
-        }}</span>
+        ><span class="info">{{ singleCountryData().population | number }}</span>
       </div>
       <div class="additional-info">
         <span class="info-title">Region:</span>
-        <span class="info">{{ singleCountryData()?.region }}</span>
+        <span class="info">{{ singleCountryData().region }}</span>
       </div>
       <div class="additional-info">
         <span class="info-title">Subregion:</span
-        ><span class="info">{{ singleCountryData()?.subregion }}</span>
+        ><span class="info">{{ singleCountryData().subregion }}</span>
       </div>
       <div class="additional-info">
         <span class="info-title">Capital:</span
-        ><span class="info">{{ singleCountryData()?.capital }}</span>
+        ><span class="info">{{ singleCountryData().capital }}</span>
       </div>
     </div>
     <div class="additional-info-box">
       <div class="additional-info">
         <span class="info-title">Top Level Domain:</span
-        ><span class="info">{{ singleCountryData()?.topLevelDomain }}</span>
+        ><span class="info">{{ singleCountryData().tld }}</span>
       </div>
       <div class="additional-info">
         <span class="info-title">Currencies:</span
@@ -61,6 +59,7 @@
       <div class="additional-info">
         <span class="info-title">Bordering countries:</span>
         <div class="info-bordercountries">
+          @if(singleCountryBorderingCountries() !== "No bordering countries"){
           @for (borderCountry of singleCountryBorderingCountries(); track
           $index) {
           <div
@@ -69,6 +68,8 @@
           >
             {{ borderCountry }}
           </div>
+          } }@else {
+          <div>None</div>
           }
         </div>
       </div>
