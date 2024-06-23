@@ -1,9 +1,9 @@
-import { Component, input, computed, inject, OnInit } from '@angular/core';
-import { CountryComponent } from '../country/country.component';
+import { Component, input, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 import { CommonModule, DecimalPipe } from '@angular/common';
+import { CountryComponent } from '../country/country.component';
 import { CountriesService } from 'src/app/shared/countries.service';
-import { Observable } from 'rxjs/internal/Observable';
 import { Country } from '../country/country.model';
 import { CountriesComponent } from '../countries.component';
 
@@ -22,18 +22,17 @@ import { CountriesComponent } from '../countries.component';
 })
 export class CountriesDisplayComponent {
   private CountriesService = inject(CountriesService);
-  public allCountries = input.required<Country[]>();
 
-  selectedRegion = input<string>();
-  searchQuery = input<string>('');
-  isSingleCountryDisplay = computed(() => {
+  public allCountries = input.required<Country[]>();
+  public selectedRegion = input<string>('All');
+  public searchQuery = input<string>('');
+  public isSingleCountryDisplay = computed((): boolean => {
     return this.CountriesService._isSingleCountryDisplay();
   });
-  displayedSingleCountry = computed(() => {
+  public displayedSingleCountry = computed((): string => {
     return this.CountriesService._displayedSingleCountry();
   });
-
-  filteredCountries = computed(() => {
+  public filteredCountries = computed((): Country[] => {
     if (this.selectedRegion() === 'All') {
       return this.allCountries();
     }
@@ -41,11 +40,10 @@ export class CountriesDisplayComponent {
       return country.region === this.selectedRegion();
     });
   });
-
-  countriesToDisplay = computed(() => {
+  public countriesToDisplay = computed((): Country[] => {
     if (this.searchQuery() != '') {
-      return this.filteredCountries().filter((filtCountry: Country) => {
-        return filtCountry.name.common
+      return this.filteredCountries().filter((filteredCountry) => {
+        return filteredCountry.name.common
           .toLocaleLowerCase()
           .includes(this.searchQuery().toLocaleLowerCase());
       });
@@ -53,8 +51,7 @@ export class CountriesDisplayComponent {
       return this.filteredCountries();
     }
   });
-
-  singleCountryData = computed((): Country => {
+  public singleCountryData = computed((): Country => {
     return (
       this.allCountries().find((country) => {
         return (
@@ -64,30 +61,25 @@ export class CountriesDisplayComponent {
       }) ?? this.allCountries()[0]
     );
   });
-
-  singleCountryImagePath = computed((): string => {
-    let imgUrl = `url("${this.singleCountryData().flags.svg}")`;
-    return imgUrl;
+  public singleCountryImagePath = computed((): string => {
+    return `url("${this.singleCountryData().flags.svg}")`;
   });
-
-  singleCountryCurrencies = computed((): string[] => {
-    const country = this.singleCountryData();
+  public singleCountryCurrencies = computed((): string[] => {
+    const country: Country = this.singleCountryData();
     if (country && country.currencies) {
       return Object.keys(country.currencies);
     }
     return [];
   });
-
-  singleCountryLanguages = computed((): string[] => {
-    const languages = this.singleCountryData()?.languages;
+  public singleCountryLanguages = computed((): string[] => {
+    const languages: { [key: string]: string } =
+      this.singleCountryData().languages;
     return languages ? Object.values(languages) : [];
   });
-
-  singleCountryBorderingCountries = computed((): string[] | string => {
+  public singleCountryBorderingCountries = computed((): string[] | string => {
     let borCountriesArr: string[] = [];
-
     if (this.singleCountryData().borders) {
-      this.singleCountryData().borders.map((borderingCountry: string) => {
+      this.singleCountryData().borders.map((borderingCountry) => {
         this.allCountries().map((country: Country) => {
           if (country.cca3 === borderingCountry) {
             borCountriesArr.push(country.name.common);
@@ -99,8 +91,7 @@ export class CountriesDisplayComponent {
     }
     return 'No bordering countries';
   });
-
-  onBorderingCountryClick(borderingCountry: string) {
+  public onBorderingCountryClick(borderingCountry: string): void {
     this.CountriesService.setDisplayedSingleCountry(borderingCountry);
   }
 }

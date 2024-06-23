@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { HeaderComponent } from './header/header.component';
 import { CountriesComponent } from './countries/countries.component';
 
@@ -10,5 +11,5 @@ import { CountriesComponent } from './countries/countries.component';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'countries-api';
+  title = 'Countries';
 }

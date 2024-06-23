@@ -1,12 +1,6 @@
-import {
-  Component,
-  Signal,
-  computed,
-  inject,
-  input,
-  output,
-} from '@angular/core';
+import { Component, computed, inject, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
 import { CountriesService } from 'src/app/shared/countries.service';
 import { CountriesComponent } from '../countries.component';
 import { Country } from '../country/country.model';
@@ -20,37 +14,34 @@ import { Country } from '../country/country.model';
 })
 export class NavigationComponent {
   private countriesService = inject(CountriesService);
-  selectedRegionNav = 'All';
-  searchQueryNav = '';
-  isSingleCountryDisplay = computed(() =>
-    this.countriesService._isSingleCountryDisplay()
-  );
 
+  public selectedRegionEvent = output<string>();
+  public searchQueryEvent = output<string>();
   public allCountries = input.required<Country[]>();
-
-  public allRegions: Signal<string[]> = computed((): string[] => {
-    console.log(this.allCountries());
+  public isSingleCountryDisplay = computed((): boolean => {
+    return this.countriesService._isSingleCountryDisplay();
+  });
+  public allRegions = computed((): string[] => {
     let regions = this.allCountries()
       .map((country: Country) => {
         return country.region;
       })
-      .filter((val: string, ind: number, arr: string[]) => {
-        return ind === arr.indexOf(val);
+      .filter((value: string, index: number, array: string[]) => {
+        return index === array.indexOf(value);
       });
-
     return ['All', ...regions];
   });
 
-  selectedRegionEvent = output<string>();
-  searchQueryEvent = output<string>();
+  public selectedRegion: string = 'All';
+  public searchQuery: string = '';
 
-  onOptionChange() {
-    this.selectedRegionEvent.emit(this.selectedRegionNav);
+  public onOptionChange(): void {
+    this.selectedRegionEvent.emit(this.selectedRegion);
   }
-  onSearchQueryInput() {
-    this.searchQueryEvent.emit(this.searchQueryNav);
+  public onSearchQueryInput(): void {
+    this.searchQueryEvent.emit(this.searchQuery);
   }
-  onBackClick() {
+  public onBackClick(): void {
     if (this.countriesService._isSingleCountryDisplay()) {
       this.countriesService.switchSingleCountryDisplay();
     }

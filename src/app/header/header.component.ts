@@ -1,4 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
+
 import { ThemeService } from '../shared/theme.service';
 
 @Component({
@@ -9,9 +10,10 @@ import { ThemeService } from '../shared/theme.service';
 })
 export class HeaderComponent {
   private themeService = inject(ThemeService);
-  theme = computed(() => this.themeService.theme);
 
-  onThemeSwitcherClick() {
+  public theme = computed((): string => this.themeService._theme());
+
+  public onThemeSwitcherClick(): void {
     this.themeService.switchTheme();
   }
 }

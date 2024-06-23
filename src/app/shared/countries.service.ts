@@ -2,6 +2,7 @@ import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+
 import { Country } from '../countries/country/country.model';
 
 @Injectable({ providedIn: 'root' })
@@ -22,16 +23,13 @@ export class CountriesService {
     );
   }
 
-  get isSingleCountryDisplay() {
-    return this._isSingleCountryDisplay();
-  }
-
-  switchSingleCountryDisplay(): void {
-    const newDisplay = this._isSingleCountryDisplay() === false ? true : false;
+  public switchSingleCountryDisplay(): void {
+    const newDisplay: boolean =
+      this._isSingleCountryDisplay() === false ? true : false;
     this._isSingleCountryDisplay.set(newDisplay);
   }
 
-  setDisplayedSingleCountry(countryName: string) {
+  public setDisplayedSingleCountry(countryName: string): void {
     this._displayedSingleCountry.set(countryName);
   }
 }

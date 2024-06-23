@@ -11,17 +11,13 @@ export class ThemeService {
     }
   }
 
-  public get theme(): string {
-    return this._theme();
+  private saveTheme(): void {
+    localStorage.setItem('theme', JSON.stringify(this._theme()));
   }
 
   public switchTheme(): void {
     const newTheme = this._theme() === 'light' ? 'dark' : 'light';
     this._theme.set(newTheme);
     this.saveTheme();
-  }
-
-  private saveTheme(): void {
-    localStorage.setItem('theme', JSON.stringify(this.theme));
   }
 }

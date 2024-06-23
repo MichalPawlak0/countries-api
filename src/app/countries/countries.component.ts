@@ -1,11 +1,11 @@
-import { Component, OnInit, Signal, computed, inject } from '@angular/core';
+import { Component, OnInit, computed, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { NavigationComponent } from './navigation/navigation.component';
 import { CountriesDisplayComponent } from './countries-display/countries-display.component';
 import { CountriesService } from '../shared/countries.service';
 import { ThemeService } from '../shared/theme.service';
 import { Country } from './country/country.model';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-countries',
@@ -15,35 +15,34 @@ import { CommonModule } from '@angular/common';
   styleUrl: './countries.component.css',
 })
 export class CountriesComponent implements OnInit {
-  private CountriesService = inject(CountriesService);
+  private countriesService = inject(CountriesService);
   private themeService = inject(ThemeService);
+
   public COUNTRIES: Country[] = [];
+  public selectedRegion: string = 'All';
+  public searchQuery: string = '';
+  public theme = computed((): string => this.themeService._theme());
+  public isSingleCountry = computed((): boolean =>
+    this.countriesService._isSingleCountryDisplay()
+  );
 
-  constructor(private countriesService: CountriesService) {}
+  constructor(countriesService: CountriesService) {}
 
-  ngOnInit(): void {
-    this.CountriesService.fetchData().subscribe({
-      next: (data: Country[]) => {
-        this.COUNTRIES = data;
-        //console.log(this.COUNTRIES);
+  public ngOnInit(): void {
+    this.countriesService.fetchData().subscribe({
+      next: (countries: Country[]) => {
+        this.COUNTRIES = countries;
       },
       error: (error) => {
         console.log(error);
       },
     });
-  } // I think I should throttle the data pulling, cause I think the rest of the code is getting executed before the data is fully pulled
-
-  selectedRegion = 'All';
-  searchQuery = '';
-  theme = computed(() => this.themeService.theme);
-  isSingleCountry = computed(() =>
-    this.countriesService._isSingleCountryDisplay()
-  );
-
-  onRegionChange(reg: string) {
-    this.selectedRegion = reg;
   }
-  onSearchInput(query: string) {
+
+  public onRegionChange(region: string): void {
+    this.selectedRegion = region;
+  }
+  public onSearchInput(query: string): void {
     this.searchQuery = query;
   }
 }

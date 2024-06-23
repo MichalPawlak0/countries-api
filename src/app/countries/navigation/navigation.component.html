@@ -25,7 +25,7 @@
       </svg>
     </button>
     <input
-      [(ngModel)]="searchQueryNav"
+      [(ngModel)]="searchQuery"
       (input)="onSearchQueryInput()"
       type="search"
       name="searchInput"
@@ -36,7 +36,7 @@
   </div>
 
   <select
-    [(ngModel)]="selectedRegionNav"
+    [(ngModel)]="selectedRegion"
     (change)="onOptionChange()"
     id="regionSelection"
     class="navigation__selection"
