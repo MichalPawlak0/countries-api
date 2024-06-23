@@ -41,7 +41,7 @@
     id="regionSelection"
     class="navigation__selection"
   >
-    @for (region of allRegions; track $index) {
+    @for (region of allRegions(); track $index) {
     <option [value]="region" class="selection__option">
       {{ region }}
     </option>

@@ -1,35 +1,45 @@
-import { HttpClientModule, provideHttpClient } from '@angular/common/http';
-import { Component, computed, inject, output, signal } from '@angular/core';
-
+import {
+  Component,
+  Signal,
+  computed,
+  inject,
+  input,
+  output,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AppService } from 'src/app/app.service';
+import { CountriesService } from 'src/app/shared/countries.service';
+import { CountriesComponent } from '../countries.component';
+import { Country } from '../country/country.model';
 
 @Component({
   selector: 'app-navigation',
   standalone: true,
-  imports: [FormsModule, HttpClientModule],
+  imports: [FormsModule, CountriesComponent],
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.css',
 })
 export class NavigationComponent {
-  private appService = inject(AppService);
-  COUNTRIES = this.appService.DATA;
+  private countriesService = inject(CountriesService);
   selectedRegionNav = 'All';
   searchQueryNav = '';
   isSingleCountryDisplay = computed(() =>
-    this.appService._isSingleCountryDisplay()
+    this.countriesService._isSingleCountryDisplay()
   );
 
-  get allRegions() {
-    let Arr = this.COUNTRIES.map((country: any) => {
-      return country.region;
-    }).filter((val: string, ind: number, arr: string[]) => {
-      return ind === arr.indexOf(val);
-    });
+  public allCountries = input.required<Country[]>();
 
-    Arr.unshift('All');
-    return Arr;
-  }
+  public allRegions: Signal<string[]> = computed((): string[] => {
+    console.log(this.allCountries());
+    let regions = this.allCountries()
+      .map((country: Country) => {
+        return country.region;
+      })
+      .filter((val: string, ind: number, arr: string[]) => {
+        return ind === arr.indexOf(val);
+      });
+
+    return ['All', ...regions];
+  });
 
   selectedRegionEvent = output<string>();
   searchQueryEvent = output<string>();
@@ -41,8 +51,8 @@ export class NavigationComponent {
     this.searchQueryEvent.emit(this.searchQueryNav);
   }
   onBackClick() {
-    if (this.appService._isSingleCountryDisplay()) {
-      this.appService.switchSingleCountryDisplay();
+    if (this.countriesService._isSingleCountryDisplay()) {
+      this.countriesService.switchSingleCountryDisplay();
     }
   }
 }

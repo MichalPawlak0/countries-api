@@ -1,5 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
-import { AppService } from '../app.service';
+import { ThemeService } from '../shared/theme.service';
 
 @Component({
   selector: 'app-header',
@@ -8,10 +8,10 @@ import { AppService } from '../app.service';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  private appService = inject(AppService);
-  theme = computed(() => this.appService.theme);
+  private themeService = inject(ThemeService);
+  theme = computed(() => this.themeService.theme);
 
   onThemeSwitcherClick() {
-    this.appService.switchTheme();
+    this.themeService.switchTheme();
   }
 }

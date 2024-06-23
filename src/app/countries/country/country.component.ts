@@ -1,6 +1,6 @@
 import { Component, computed, inject, input } from '@angular/core';
-import { AppService } from 'src/app/app.service';
 import { DecimalPipe } from '@angular/common';
+import { CountriesService } from 'src/app/shared/countries.service';
 
 @Component({
   selector: 'app-country',
@@ -10,7 +10,7 @@ import { DecimalPipe } from '@angular/common';
   imports: [DecimalPipe],
 })
 export class CountryComponent {
-  private appService = inject(AppService);
+  private countriesService = inject(CountriesService);
   selectedCountryName = input.required<string>();
   backgroundImageUrl = input.required<string>();
   selectedCountryPopulation = input.required<number | string>();
@@ -19,7 +19,7 @@ export class CountryComponent {
   backgroundImage = computed(() => `url("${this.backgroundImageUrl()}")`);
 
   onCountryClick() {
-    this.appService.setDisplayedSingleCountry(this.selectedCountryName());
-    this.appService.switchSingleCountryDisplay();
+    this.countriesService.setDisplayedSingleCountry(this.selectedCountryName());
+    this.countriesService.switchSingleCountryDisplay();
   }
 }
