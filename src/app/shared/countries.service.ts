@@ -13,14 +13,7 @@ export class CountriesService {
   constructor(private http: HttpClient) {}
 
   public fetchData(): Observable<Country[]> {
-    return this.http.get<Country[]>('https://restcountries.com/v3.1/all').pipe(
-      tap((response: Country[]) => {
-        return response;
-      }),
-      catchError((error) => {
-        throw error;
-      })
-    );
+    return this.http.get<Country[]>('https://restcountries.com/v3.1/all');
   }
 
   public switchSingleCountryDisplay(): void {
