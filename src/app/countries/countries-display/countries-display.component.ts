@@ -1,9 +1,10 @@
 import { Component, input, computed, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
 import { CommonModule, DecimalPipe } from '@angular/common';
+
+import { ObserveElementDirective } from 'src/app/shared/directives/observe-element.directive';
 import { CountryComponent } from '../country/country.component';
-import { CountriesService } from 'src/app/shared/countries.service';
+import { CountriesService } from 'src/app/shared/services/countries.service';
 import { Country } from '../country/country.model';
 import { CountriesComponent } from '../countries.component';
 
@@ -16,6 +17,7 @@ import { CountriesComponent } from '../countries.component';
     DecimalPipe,
     CommonModule,
     CountriesComponent,
+    ObserveElementDirective,
   ],
   templateUrl: './countries-display.component.html',
   styleUrl: './countries-display.component.css',
@@ -93,5 +95,8 @@ export class CountriesDisplayComponent {
   });
   public onBorderingCountryClick(borderingCountry: string): void {
     this.CountriesService.setDisplayedSingleCountry(borderingCountry);
+  }
+  public isIntersecting(status: boolean, index: number) {
+    console.log('Element #' + index + ' is intersecting ' + status);
   }
 }

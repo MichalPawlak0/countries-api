@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { Country } from '../countries/country/country.model';
+import { Country } from '../../countries/country/country.model';
 
 @Injectable({ providedIn: 'root' })
 export class CountriesService {

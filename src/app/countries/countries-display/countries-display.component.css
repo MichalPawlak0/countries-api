@@ -51,7 +51,6 @@
   cursor: pointer;
   border-radius: 5px;
 }
-
 @media screen and (max-width: 68em) {
   .section__flags {
     grid-template-columns: repeat(3, 1fr);

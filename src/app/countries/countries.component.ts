@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { NavigationComponent } from './navigation/navigation.component';
 import { CountriesDisplayComponent } from './countries-display/countries-display.component';
-import { CountriesService } from '../shared/countries.service';
-import { ThemeService } from '../shared/theme.service';
+import { CountriesService } from '../shared/services/countries.service';
+import { ThemeService } from '../shared/services/theme.service';
 import { Country } from './country/country.model';
 import { catchError, takeUntil, tap } from 'rxjs/operators';
 import { Subject } from 'rxjs';

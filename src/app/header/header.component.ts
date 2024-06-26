@@ -1,6 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
 
-import { ThemeService } from '../shared/theme.service';
+import { ThemeService } from '../shared/services/theme.service';
 
 @Component({
   selector: 'app-header',

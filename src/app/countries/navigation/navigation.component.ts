@@ -1,7 +1,7 @@
 import { Component, computed, inject, input, output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { CountriesService } from 'src/app/shared/countries.service';
+import { CountriesService } from 'src/app/shared/services/countries.service';
 import { CountriesComponent } from '../countries.component';
 import { Country } from '../country/country.model';
 
