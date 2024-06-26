@@ -96,7 +96,4 @@ export class CountriesDisplayComponent {
   public onBorderingCountryClick(borderingCountry: string): void {
     this.CountriesService.setDisplayedSingleCountry(borderingCountry);
   }
-  public isIntersecting(status: boolean, index: number) {
-    console.log('Element #' + index + ' is intersecting ' + status);
-  }
 }
