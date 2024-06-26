@@ -1,7 +1,7 @@
 @if (!isSingleCountryDisplay()) {
 <nav class="navigation">
   <div class="searchbox">
-    <button class="search-button">
+    <button class="search-button" name="search-button">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="search-icon"
@@ -35,6 +35,7 @@
     />
   </div>
 
+  <label for="regionSelection"></label>
   <select
     [(ngModel)]="selectedRegion"
     (change)="onOptionChange()"
