@@ -7,17 +7,21 @@ import { CountryComponent } from '../country/country.component';
 import { CountriesService } from 'src/app/shared/services/countries.service';
 import { Country } from '../country/country.model';
 import { CountriesComponent } from '../countries.component';
+import { RouterOutlet } from '@angular/router';
+import { SingleCountryDisplayComponent } from '../single-country-display/single-country-display.component';
 
 @Component({
   selector: 'app-countries-display',
   standalone: true,
   imports: [
     CountryComponent,
+    SingleCountryDisplayComponent,
     FormsModule,
     DecimalPipe,
     CommonModule,
     CountriesComponent,
     ObserveElementDirective,
+    RouterOutlet,
   ],
   templateUrl: './countries-display.component.html',
   styleUrl: './countries-display.component.css',
