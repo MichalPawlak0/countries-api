@@ -1,4 +1,11 @@
-import { Component, OnDestroy, OnInit, computed, inject } from '@angular/core';
+import {
+  Component,
+  Injectable,
+  OnDestroy,
+  OnInit,
+  computed,
+  inject,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { NavigationComponent } from './navigation/navigation.component';
@@ -16,6 +23,7 @@ import { Subject } from 'rxjs';
   templateUrl: './countries.component.html',
   styleUrl: './countries.component.css',
 })
+@Injectable({ providedIn: 'root' })
 export class CountriesComponent implements OnInit, OnDestroy {
   private countriesService = inject(CountriesService);
   private themeService = inject(ThemeService);
@@ -24,12 +32,11 @@ export class CountriesComponent implements OnInit, OnDestroy {
   public COUNTRIES: Country[] = [];
   public selectedRegion: string = 'All';
   public searchQuery: string = '';
+
   public theme = computed((): string => this.themeService._theme());
   public isSingleCountry = computed((): boolean =>
     this.countriesService._isSingleCountryDisplay()
   );
-
-  constructor(countriesService: CountriesService) {}
 
   public ngOnInit(): void {
     this.countriesService
@@ -53,7 +60,7 @@ export class CountriesComponent implements OnInit, OnDestroy {
       });
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     this.destroyed.next(true);
     this.destroyed.complete();
   }

@@ -3,10 +3,3 @@
   background-color: #fafafa;
   min-height: calc(100vh - 78px);
 }
-.main.singlecountry {
-  background-color: #fff;
-}
-
-.main.dark.singlecountry {
-  background-color: hsl(207, 26%, 17%) !important;
-}

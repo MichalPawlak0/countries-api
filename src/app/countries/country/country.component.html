@@ -1,4 +1,8 @@
-<div class="country" (click)="onCountryClick()">
+<div
+  class="country"
+  (click)="onCountryClick()"
+  [routerLink]="['/country', selectedCountryName()]"
+>
   <div
     class="flag-box"
     [style.background-image]="displayedBackgroundImage()"
