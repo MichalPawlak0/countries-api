@@ -1,5 +1,3 @@
-<!-- @if (!isSingleCountryDisplay()) { -->
-
 <div class="section__flags">
   @for (country of countriesToDisplay(); track $index) {
   <app-country
@@ -13,17 +11,5 @@
     #intersection="intersection"
     [isContinuous]="false"
   ></app-country>
-  <!-- <app-single-country-display
-    [allCountries]="allCountries()"
-  ></app-single-country-display> -->
-  <!-- <app-single-country-display
-    [singleCountryData]="singleCountryData()"
-    [singleCountryImagePath]="singleCountryImagePath()"
-    [singleCountryData]="singleCountryData()"
-    [singleCountryCurrencies]="singleCountryCurrencies()"
-    [singleCountryLanguages]="singleCountryLanguages()"
-    [singleCountryBorderingCountries]="singleCountryBorderingCountries()"
-  ></app-single-country-display> -->
   }
 </div>
-<!-- } @else if (isSingleCountryDisplay()) { } -->

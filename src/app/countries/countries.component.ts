@@ -7,14 +7,14 @@ import {
   inject,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { catchError, takeUntil, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 import { NavigationComponent } from './navigation/navigation.component';
 import { CountriesDisplayComponent } from './countries-display/countries-display.component';
 import { CountriesService } from '../shared/services/countries.service';
 import { ThemeService } from '../shared/services/theme.service';
 import { Country } from './country/country.model';
-import { catchError, takeUntil, tap } from 'rxjs/operators';
-import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-countries',
@@ -34,9 +34,6 @@ export class CountriesComponent implements OnInit, OnDestroy {
   public searchQuery: string = '';
 
   public theme = computed((): string => this.themeService._theme());
-  public isSingleCountry = computed((): boolean =>
-    this.countriesService._isSingleCountryDisplay()
-  );
 
   public ngOnInit(): void {
     this.countriesService
@@ -59,7 +56,6 @@ export class CountriesComponent implements OnInit, OnDestroy {
         },
       });
   }
-
   public ngOnDestroy() {
     this.destroyed.next(true);
     this.destroyed.complete();

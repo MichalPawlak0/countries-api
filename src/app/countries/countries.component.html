@@ -1,5 +1,4 @@
-@if (theme() === 'light') {
-<main [class.singlecountry]="isSingleCountry()" class="main">
+<main class="main" [class.dark]="theme() === 'dark'">
   <div class="container">
     <app-navigation
       (selectedRegionEvent)="onRegionChange($event)"
@@ -13,23 +12,3 @@
     ></app-countries-display>
   </div>
 </main>
-} @else if (theme() === 'dark') {
-<main
-  [class.singlecountry]="isSingleCountry()"
-  [class.dark]="true"
-  class="main"
->
-  <div class="container">
-    <app-navigation
-      (selectedRegionEvent)="onRegionChange($event)"
-      (searchQueryEvent)="onSearchInput($event)"
-      [allCountries]="COUNTRIES"
-    ></app-navigation>
-    <app-countries-display
-      [selectedRegion]="selectedRegion"
-      [searchQuery]="searchQuery"
-      [allCountries]="COUNTRIES"
-    ></app-countries-display>
-  </div>
-</main>
-}

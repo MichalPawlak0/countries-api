@@ -1,4 +1,6 @@
 import { Component, computed, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { ThemeService } from '../shared/services/theme.service';
 
@@ -7,6 +9,7 @@ import { ThemeService } from '../shared/services/theme.service';
   standalone: true,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
+  imports: [RouterLink, CommonModule],
 })
 export class HeaderComponent {
   private themeService = inject(ThemeService);

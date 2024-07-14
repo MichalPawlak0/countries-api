@@ -4,13 +4,26 @@
   min-height: calc(100vh - 78px);
 }
 .main.singlecountry {
-  background-color: #fff;
+  background-color: #fafafa;
 }
-
 .main.dark.singlecountry {
   background-color: hsl(207, 26%, 17%) !important;
 }
-
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 49px;
+}
+.back-button {
+  height: 100%;
+  padding: 1rem 4rem 1rem 3rem;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(200, 200, 200, 0.8);
+}
 .section__singlecountry {
   margin-top: 6rem;
   background-color: #fff;
@@ -56,6 +69,13 @@
   box-shadow: 0 0 10px rgba(200, 200, 200, 0.6);
   cursor: pointer;
   border-radius: 5px;
+}
+@media screen and (max-width: 38em) {
+  .navigation {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
 }
 @media screen and (max-width: 50em) {
   .section__singlecountry {

@@ -2,19 +2,18 @@ import {
   Component,
   computed,
   inject,
-  Inject,
   input,
   OnInit,
   Signal,
 } from '@angular/core';
-import { Country } from '../country/country.model';
 import { DecimalPipe } from '@angular/common';
-import { CountryComponent } from '../country/country.component';
-import { CountriesComponent } from '../countries.component';
-import { CountriesDisplayComponent } from '../countries-display/countries-display.component';
-import { CountriesService } from 'src/app/shared/services/countries.service';
-import { catchError, Subject, takeUntil, tap } from 'rxjs';
 import { RouterLink } from '@angular/router';
+import { catchError, Subject, takeUntil, tap } from 'rxjs';
+
+import { Country } from '../country/country.model';
+import { CountriesComponent } from '../countries.component';
+import { CountriesService } from 'src/app/shared/services/countries.service';
+import { ThemeService } from 'src/app/shared/services/theme.service';
 
 @Component({
   selector: 'app-single-country-display',
@@ -26,7 +25,9 @@ import { RouterLink } from '@angular/router';
 export class SingleCountryDisplayComponent implements OnInit {
   private countriesService = inject(CountriesService);
   private destroyed = new Subject();
+  private themeService = inject(ThemeService);
 
+  public theme = computed((): string => this.themeService._theme());
   public countryName = input.required<string>();
   public parentElement = inject(CountriesComponent);
   public allCountries: Country[] = new Array();
@@ -34,7 +35,7 @@ export class SingleCountryDisplayComponent implements OnInit {
   public singleCountryImagePath!: Signal<string>;
   public singleCountryCurrencies!: Signal<{}>;
   public singleCountryLanguages!: Signal<string[]>;
-  public singleCountryBorderingCountries: any = ['Poland'];
+  public singleCountryBorderingCountries!: Signal<string | string[]>;
 
   public ngOnInit(): void {
     this.countriesService
@@ -98,7 +99,7 @@ export class SingleCountryDisplayComponent implements OnInit {
       });
   }
 
-  ngOnDestroy() {
+  public ngOnDestroy() {
     this.destroyed.next(true);
     this.destroyed.complete();
   }

@@ -1,67 +1,71 @@
-<main class="container singlecountry">
-  <div class="section__singlecountry">
-    <div
-      class="singlecountry-flagbox"
-      [style.background-image]="singleCountryImagePath()"
-    ></div>
-    <div class="singlecountry-infobox">
-      <h2 class="country__name">
-        {{ singleCountryData().name.common }}
-      </h2>
-      <div class="additional-info-box">
-        <div class="additional-info">
-          <span class="info-title">Native Name:</span
-          ><span class="info">{{ singleCountryData().name.official }} </span>
+<main class="main singlecountry" [class.dark]="theme() === 'dark'">
+  <div class="container">
+    <nav class="navigation">
+      <button class="back-button" routerLink="/">&larr; Back</button>
+    </nav>
+    <div class="section__singlecountry">
+      <div
+        class="singlecountry-flagbox"
+        [style.background-image]="singleCountryImagePath()"
+      ></div>
+      <div class="singlecountry-infobox">
+        <h2 class="country__name">
+          {{ singleCountryData().name.common }}
+        </h2>
+        <div class="additional-info-box">
+          <div class="additional-info">
+            <span class="info-title">Native Name:</span>
+            <span class="info">{{ singleCountryData().name.official }} </span>
+          </div>
+          <div class="additional-info">
+            <span class="info-title">Population:</span>
+            <span class="info">{{
+              singleCountryData().population | number
+            }}</span>
+          </div>
+          <div class="additional-info">
+            <span class="info-title">Region:</span>
+            <span class="info">{{ singleCountryData().region }}</span>
+          </div>
+          <div class="additional-info">
+            <span class="info-title">Subregion:</span>
+            <span class="info">{{ singleCountryData().subregion }}</span>
+          </div>
+          <div class="additional-info">
+            <span class="info-title">Capital:</span>
+            <span class="info">{{ singleCountryData().capital }}</span>
+          </div>
         </div>
-        <div class="additional-info">
-          <span class="info-title">Population:</span
-          ><span class="info">{{
-            singleCountryData().population | number
-          }}</span>
+        <div class="additional-info-box">
+          <div class="additional-info">
+            <span class="info-title">Top Level Domain:</span>
+            <span class="info">{{ singleCountryData().tld }}</span>
+          </div>
+          <div class="additional-info">
+            <span class="info-title">Currencies:</span>
+            <span class="info">{{ singleCountryCurrencies() }}</span>
+          </div>
+          <div class="additional-info">
+            <span class="info-title">Languages:</span>
+            <span class="info">{{ singleCountryLanguages() }}</span>
+          </div>
         </div>
-        <div class="additional-info">
-          <span class="info-title">Region:</span>
-          <span class="info">{{ singleCountryData().region }}</span>
-        </div>
-        <div class="additional-info">
-          <span class="info-title">Subregion:</span
-          ><span class="info">{{ singleCountryData().subregion }}</span>
-        </div>
-        <div class="additional-info">
-          <span class="info-title">Capital:</span
-          ><span class="info">{{ singleCountryData().capital }}</span>
-        </div>
-      </div>
-      <div class="additional-info-box">
-        <div class="additional-info">
-          <span class="info-title">Top Level Domain:</span
-          ><span class="info">{{ singleCountryData().tld }}</span>
-        </div>
-        <div class="additional-info">
-          <span class="info-title">Currencies:</span
-          ><span class="info">{{ singleCountryCurrencies() }}</span>
-        </div>
-        <div class="additional-info">
-          <span class="info-title">Languages:</span
-          ><span class="info">{{ singleCountryLanguages() }}</span>
-        </div>
-      </div>
-      <div class="additional-info-box">
-        <div class="additional-info">
-          <span class="info-title">Bordering countries:</span>
-          <div class="info-bordercountries">
-            @if(singleCountryBorderingCountries() !== "No bordering countries"){
-            @for (borderCountry of singleCountryBorderingCountries(); track
-            $index) {
-            <div
-              [routerLink]="['/country', borderCountry]"
-              class="info-bordercountry"
-            >
-              {{ borderCountry }}
+        <div class="additional-info-box">
+          <div class="additional-info">
+            <span class="info-title">Bordering countries:</span>
+            <div class="info-bordercountries">
+              <!-- prettier-ignore -->
+              @if(singleCountryBorderingCountries() !== "No bordering countries"){ @for (borderCountry of singleCountryBorderingCountries(); track ($index)) {
+              <div
+                [routerLink]="['/country', borderCountry]"
+                class="info-bordercountry"
+              >
+                {{ borderCountry }}
+              </div>
+              } } @else {
+              <div>None</div>
+              }
             </div>
-            } }@else {
-            <div>None</div>
-            }
           </div>
         </div>
       </div>
